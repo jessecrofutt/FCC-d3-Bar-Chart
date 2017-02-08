@@ -165,7 +165,10 @@ d3.json(url, (jsonData) => {
       .attr("height", function(d) { return (height - y(d[1])); })
       .on("mouseover", function(d){
           d3.select(this).attr("class", "barSelected");
-          tooltip.style("visibility", "visible").html(d[4]+" "+ d[3] +"<br/>" + "GDP: "+d[1] );
+          tooltip
+              .style("top", (d3.event.pageY + 10) + "px")
+              .style("left", (d3.event.pageX) + "px")
+              .style("visibility", "visible").html(d[4]+" "+ d[3] +"<br/>" + "GDP: "+d[1] );
 
       })
       .on("mousemove", function(){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");})
